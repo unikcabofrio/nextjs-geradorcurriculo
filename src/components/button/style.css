@@ -1,0 +1,14 @@
+.bbb-container{
+    padding: .5rem;
+    border-radius: .5rem;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.bbb-container.hidebpage{
+    opacity: 0;
+}

@@ -1,0 +1,7 @@
+.bb_container {
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}

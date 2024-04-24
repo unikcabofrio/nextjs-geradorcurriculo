@@ -1,0 +1,14 @@
+.box-top-alert{
+    position: absolute;
+    width: 100vw;
+    padding: .5rem;
+    transition: all .5s;
+}
+
+.box-top-alert > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 1rem;
+}

@@ -1,0 +1,49 @@
+.form-textarea{
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+}
+
+.form-textarea > label{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-textarea > textarea{
+  resize: none;
+  border: .1rem solid #ddd;
+  color:#767676;
+  border-radius: .3rem;
+  margin-top: .2rem;
+  font-size: 1rem;
+  outline: none;
+  padding: 1rem .5rem;
+  cursor: pointer;
+  height: 300px;
+}
+
+.form-textarea > textarea:focus{
+  border: .1rem solid #BF0436;
+  color:#020873;
+}
+
+.form-textarea > select{
+  border: .1rem solid #ddd;
+  color:#767676;
+  border-radius: .3rem;
+  margin-top: .2rem;
+  font-size: 1rem;
+  outline: none;
+  padding: 1rem .5rem;
+  cursor: pointer;
+}
+
+.form-textarea > select:focus{
+  border: .1rem solid #BF0436;
+  color:#020873;
+}
+
+.form-textarea > select > option{
+  max-height: 200px;
+}

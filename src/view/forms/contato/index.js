@@ -23,6 +23,10 @@ export default function FormContato() {
 
             <div className='forms-bardivisa'></div>
 
+            <div className='double'>
+                <Input titulo={'CEP'} name={'cep'} required={false} index={10}/>
+            </div>
+
             <Input titulo={'Endereço'} name={'endereco'} index={6}/>
             <div className='double'>
                 <Input titulo={'Bairro'} name={'bairro'} required={false} index={7}/>
@@ -30,12 +34,12 @@ export default function FormContato() {
             </div>
             <div className='double'>
                 <Input titulo={'Estado'} name={'estado'} index={9}/>
-                <Input titulo={'CEP'} name={'cep'} required={false} index={10}/>
+                <InputData titulo={'Data Nascimento'} name={'dataNasc'} index={11} required={false}/>
             </div>
 
             <div className='forms-bardivisa'></div>
 
-            <InputData titulo={'Data Nascimento'} name={'dataNasc'} index={11} required={false}/>
+            
 
             <div className='double'>
                 <SelectBox titulo={'Habilitação'} name={'cnh'} required={false}

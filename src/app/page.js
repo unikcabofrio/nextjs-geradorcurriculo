@@ -17,6 +17,8 @@ import CheckCampos from "@/services/checkCampos";
 
 import BoxTopAlert from "@/components/alert/boxTop";
 
+import { Select } from "@/database/data";
+
 
 export default function Home() {
 
@@ -55,15 +57,16 @@ export default function Home() {
 
     if (index >= 0 && index < listaMenu.length) {
 
-      // if(!CheckCampos(indexAtivo) && index > indexAtivo){
-      //   setAlertVivivel(true)
-      //   setTimeout(()=>{setAlertVivivel(false)},2000)
-      //   return
-      // }
+      if(!CheckCampos(indexAtivo) && index > indexAtivo){
+        setAlertVivivel(true)
+        setTimeout(()=>{setAlertVivivel(false)},2000)
+        return
+      }
       setIndexAtivo(index)
 
       const BotaoBackPage = document.getElementById("BTN_BACK_PAGE")
       index > 0 ? BotaoBackPage.classList.remove("hidebpage") : BotaoBackPage.classList.add("hidebpage")
+      console.log(Select())
     }
     else{
       console.log(index)

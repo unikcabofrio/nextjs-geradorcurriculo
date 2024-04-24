@@ -1,13 +1,32 @@
 import { useState } from 'react'
 import './style.css'
 import { Insert,Select } from '@/database/data'
+import GetCEP from '@/services/getCEP'
 
 export function Input(props) {
   const [inputValue,setInputValue] = useState(Select(props.name)[0] ? Select(props.name)[0] : '')
 
+  const insertCEP = async (value) =>{
+    const res = await GetCEP(value)
+
+    document.getElementById('endereco').value = res.street
+    Insert(res.street, 'endereco')
+
+    document.getElementById('bairro').value = res.neighborhood
+    Insert(res.neighborhood, 'bairro')
+
+    document.getElementById('cidade').value = res.city
+    Insert(res.city, 'cidade')
+
+    document.getElementById('estado').value = res.state
+    Insert(res.state, 'estado')
+  }
+
   const handleInput = (value, key) => {
     Insert(value, key)
     setInputValue(value)
+
+    if(key='cep' && value.length >= 8) insertCEP(value)
   }
 
   return (

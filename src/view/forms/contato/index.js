@@ -35,10 +35,7 @@ export default function FormContato() {
 
             <div className='forms-bardivisa'></div>
 
-            <div className='double'>
-                <InputData titulo={'Data Nascimento'} name={'dataNasc'} index={11} required={false}/>
-                <InputIndade titulo={'Sua Idade'} name={'idade'} required={false} index={12}/>
-            </div>
+            <InputData titulo={'Data Nascimento'} name={'dataNasc'} index={11} required={false}/>
 
             <div className='double'>
                 <SelectBox titulo={'Habilitação'} name={'cnh'} required={false}

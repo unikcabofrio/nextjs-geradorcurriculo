@@ -39,8 +39,6 @@ export function InputData(props) {
     Insert(value, key)
 
     const idade = dataAtual.getFullYear() - parseInt(value.split('-')[0])
-    const inputIdade = document.getElementById('input_idade')
-    inputIdade.value = idade
     Insert(idade, 'idade')
   }
 

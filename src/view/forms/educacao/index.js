@@ -4,6 +4,7 @@ import './style.css'
 import { Insert, Select } from '@/database/data'
 
 import { Input } from '@/components/form/inputs'
+import { SelectBox } from '@/components/form/select'
 
 export default function FormEducação() {
     let dataAtual = new Date();
@@ -58,13 +59,16 @@ export default function FormEducação() {
                             />
 
                             <div className='double'>
-                                <Input
-                                    index={index+2}
-                                    titulo={'Grau'}
-                                    name={`eduGrau_${item}`}
+                                <SelectBox 
+                                    titulo={'Grau'} 
+                                    name={`eduGrau_${item}`} 
+                                    required={false}
+                                    options={[
+                                        'Ensino Fundamental', 'Ensino Médio', 'Ensino Superior', ' Ensino Superior Avançado'
+                                    ]}
                                     value={item.grau}
                                     onChange={(e) => { handleInput(e.target.value, 'grau', index) }}
-                                    required={false}
+                                    index={index+2}
                                 />
                                 <Input
                                     index={index+3}

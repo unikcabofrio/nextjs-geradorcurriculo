@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from "react";
 
-import BarraMenuEsquerdo from "@/pages/barraMenuEsquerdo";
-import BarraTopo from "@/pages/barraTopo";
-import BarraBtnPagina from "@/pages/barraBtnPagina";
-import BoxViewe from "@/pages/boxViewe";
+import BarraMenuEsquerdo from "@/view/barraMenuEsquerdo";
+import BarraTopo from "@/view/barraTopo";
+import BarraBtnPagina from "@/view/barraBtnPagina";
+import BoxViewe from "@/view/boxViewe";
 
-import FormContato from "@/pages/forms/contato";
-import FormObjetivo from "@/pages/forms/objetivo";
-import FormEducação from "@/pages/forms/educacao";
-import FormExperiencia from "@/pages/forms/experiencia";
-import FormHabilidade from "@/pages/forms/habilidades";
+import FormContato from "@/view/forms/contato";
+import FormObjetivo from "@/view/forms/objetivo";
+import FormEducação from "@/view/forms/educacao";
+import FormExperiencia from "@/view/forms/experiencia";
+import FormHabilidade from "@/view/forms/habilidades";
 
 import CheckCampos from "@/services/checkCampos";
 
@@ -22,7 +22,7 @@ export default function Home() {
 
   const [alertVisivel,setAlertVivivel] = useState(false)
   const [indexAtivo, setIndexAtivo] = useState(0)
-  const [listaMenu, setListaMenu] = useState([
+  const [listaMenu] = useState([
     {
       titulo: "Informações de Contato",
       icone: "person",
@@ -55,11 +55,11 @@ export default function Home() {
 
     if (index >= 0 && index < listaMenu.length) {
 
-      if(!CheckCampos(indexAtivo) && index > indexAtivo){
-        setAlertVivivel(true)
-        setTimeout(()=>{setAlertVivivel(false)},2000)
-        return
-      }
+      // if(!CheckCampos(indexAtivo) && index > indexAtivo){
+      //   setAlertVivivel(true)
+      //   setTimeout(()=>{setAlertVivivel(false)},2000)
+      //   return
+      // }
       setIndexAtivo(index)
 
       const BotaoBackPage = document.getElementById("BTN_BACK_PAGE")

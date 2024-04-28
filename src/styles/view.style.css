@@ -1,0 +1,122 @@
+.viewer {
+    border: none;
+    padding: 1rem;
+}
+
+.paper{
+    display: flex;
+}
+
+#paperPDF{
+    width: 793.707px;
+    height: 1122.52px;
+    box-sizing: content-box;
+}
+
+#paperPDF > div{
+    height: 1122.52px;
+}
+
+.left{
+    background-color: #767676;
+    color:#fff;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.left > img {
+    width: 200px;
+    border-radius: 200px;
+    margin-bottom: 20px;
+}
+
+.left > .info{
+    width: 230px;
+    border-top: 2px solid #565656;
+    padding: 20px 0;
+}
+
+.left > .info > h5,
+.right > .info > h5{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.left > .info > p,
+.right > .infoHeader > p{
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+
+.left > .info > p > span,
+.right > .infoHeader > p > strong >span {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.right{
+    background-color: #fff;
+    color:#000;
+    width: 809px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0 0;
+    font-size: 12px;
+}
+
+.right > .firstName,
+.right > .lastName,
+.right > .infoHeader,
+.right > .info{
+    padding-left: 20px !important;
+}
+
+.right > .firstName{
+    font-size: 65px;
+    color: #565656;
+}
+
+.right > .lastName{
+    font-size: 45px;
+}
+
+.right > .infoHeader{
+    width: 503px;
+    padding: 20px 0;
+}
+
+.right > .infoHeader > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.right > .infoHeader > p,
+.right > .infoHeader > div > p,
+.right > .info > div > p
+{
+    margin: 5px 0;
+}
+
+.right > .info {
+    width: 503px;
+    border-top: 2px solid #767676;
+    padding: 20px 0;
+}
+
+.right > .info > h5{
+   color: #565656;
+}
+
+.right > .info > div{
+    margin: 10px 0;
+    margin-bottom: 40px;
+}
+
+.right > .info > div > .desc{
+    text-align: justify;
+}

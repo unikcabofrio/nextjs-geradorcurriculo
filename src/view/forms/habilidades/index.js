@@ -1,21 +1,21 @@
 import { useState } from 'react'
-import './style.css'
-
+import Formulario from '@/components/form'
+import { ListaHabilidades } from '@/utils/listaComponents'
 import { Insert, Select } from '@/database/data'
-
 import { Input } from '@/components/form/inputs'
 import { SelectBox } from '@/components/form/select'
+import { ButtonAdd,ButtonRemove } from '@/components/button/divAddRemove'
 
 export default function FormHabilidade() {
 
-    const [addHab, setaddHab] = useState(Select('habilidade')[0] ? Select('habilidade')[0] : [{ nome: "", nivel: ""}])
+    const [arrayHab, setArrayHab] = useState(Select('habilidade')[0] ? Select('habilidade')[0] : [ListaHabilidades[0]])
 
     const handleClickAdd = () => {
-        setaddHab(prevState => [...prevState, { nome: "", nivel: ""}]);
+        setArrayHab(prevState => [...prevState, ListaHabilidades[0]]);
     }
 
     const handleClickRemove = (index) => {
-        setaddHab(prevState => {
+        setArrayHab(prevState => {
             const newState = [...prevState];
             newState.splice(index, 1);
             Insert(newState, 'habilidade')
@@ -24,54 +24,28 @@ export default function FormHabilidade() {
     }
 
     const handleInput = (value, key, index) => {
-        setaddHab(prevState => {
+        setArrayHab(prevState => {
             const newState = [...prevState];
             newState[index][key] = value
             return newState
         })
-        Insert(addHab, 'habilidade')
+        Insert(arrayHab, 'habilidade')
     }
 
     return (
-        <form className='Forms'>
+        <Formulario>
             {
-                addHab.map((item, index) => {
+                arrayHab.map((item, index) => {
                     return (
                         <div key={index}>
-                            {
-                                addHab.length > 1 ?
-                                    <div className='forms-bardivs'>
-                                        <span className='text'>Remover Campo</span>
-                                        <span className='divsr' />
-                                        <span className="material-symbols-outlined clickRemove" onClick={() => { handleClickRemove(index) }}>remove</span>
-                                    </div> :
-                                    ''
-                            }
-                            <Input
-                                index={index+1}
-                                titulo={'Tipo'}
-                                name={`habName_${item}`}
-                                value={item.nome}
-                                onChange={(e) => { handleInput(e.target.value, 'nome', index) }}
-                                required={false}
-                            />
-                            <SelectBox
-                                index={index+2}
-                                titulo={'Nível de Conhecimento'}
-                                name={`habNivel_${item}`}
-                                value={item.nivel}
-                                onChange={(e) => { handleInput(e.target.value, 'nivel', index) }}
-                                options={['Básico','Intermediário','Avançado']}
-                                required={false}
-                            />                            
+                            <ButtonRemove index={index} handleClickRemove={handleClickRemove} length={arrayHab.length}/>
+                            <Input titulo={'Tipo'} name={`habName_${index}`} value={item.nome}onChange={(e) => { handleInput(e.target.value, 'nome', index) }}/>
+                            <SelectBox titulo={'Nível de Conhecimento'} name={`habNivel_${index}`} value={item.nivel}onChange={(e) => { handleInput(e.target.value, 'nivel', index) }} options={ListaHabilidades[1].listaNivel}/>
                         </div>
                     )
                 })
             }
-            <div className='forms-bardivs'>
-                <span className='divs' />
-                <span className="material-symbols-outlined clickAdd" onClick={() => { handleClickAdd() }}>add</span>
-            </div>
-        </form>
+            <ButtonAdd handleClickAdd={handleClickAdd}/>
+        </Formulario>
     )
 }

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "cep-promise": "^4.4.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",

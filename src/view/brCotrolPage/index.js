@@ -1,25 +1,24 @@
 import './style.css'
 import Button from '@/components/button';
 
-export default function BarraBtnPagina(props) {
+export default function BrCotrolPage(props) {
 
   return (
-    <div className="bb_container">
+    <div className="barControlPage">
       <Button
         name={"Voltar"}
         bgColor={"#ffffff"}
         color={"#020659"}
         bdColor={"#020659"}
         onClick={() => { props.ClickMenuEsquerdo(props.indexAtivo - 1) }}
-        funcClick={"BACK_PAGE"}
+        className={props.indexAtivo === 0 ? 'hide' : ''}
       />
       <Button
-        name={"Próximo"}
+        name={props.indexAtivo >= props.Lstlength -1 ? 'Baixar PDF' : 'Próximo'}
         bgColor={"#020659"}
         color={"#ffffff"}
         bdColor={"#020659"}
         onClick={() => { props.ClickMenuEsquerdo(props.indexAtivo + 1) }}
-        funcClick={"NEXT_PAGE"}
       />
     </div>
   );

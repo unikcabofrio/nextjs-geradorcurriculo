@@ -1,64 +1,32 @@
-import './style.css'
-
-import { Input, InputData, InputIndade } from '@/components/form/inputs'
+import Formulario from '@/components/form'
+import { listaContato } from '@/utils/listaComponents'
+import { Input, InputData } from '@/components/form/inputs'
 import { SelectBox } from '@/components/form/select'
 import { InputImage } from '@/components/form/image'
 
 export default function FormContato() {
-
     return (
-        <form className='Forms'>
-
-            <div className='double'>
-                <Input titulo={'Primeiro Nome'} name={'primeiroNome'} index={1}/>
-                <Input titulo={'Sobrenome'} name={'sobrenome'} index={2}/>
-            </div>
-
-            <Input titulo={'E-mail'} name={'email'} type={'email'} index={3}/>
-
-            <div className='double'>
-                <Input titulo={'Contato'} name={'telefone'} index={4}/>
-                <Input titulo={'WhatsApp'} name={'whatsapp'} index={5}/>
-            </div>
-
-            <div className='forms-bardivisa'></div>
-
-            <div className='double'>
-                <Input titulo={'CEP'} name={'cep'} required={false} index={10}/>
-            </div>
-
-            <Input titulo={'Endereço'} name={'endereco'} index={6}/>
-            <div className='double'>
-                <Input titulo={'Bairro'} name={'bairro'} required={false} index={7}/>
-                <Input titulo={'Cidade'} name={'cidade'} index={8}/>
-            </div>
-            <div className='double'>
-                <Input titulo={'Estado'} name={'estado'} index={9}/>
-                <InputData titulo={'Data Nascimento'} name={'dataNasc'} index={11} required={false}/>
-            </div>
-
-            <div className='forms-bardivisa'></div>
-
-            
-
-            <div className='double'>
-                <SelectBox titulo={'Habilitação'} name={'cnh'} required={false}
-                    options={[
-                        'Não Tenho CNH', 'ACC', 'A', 'B', 'AB', 'C', 'AC', 'D', 'AD', 'E', 'AE'
-                    ]}
-                    index={13}
-                />
-                <SelectBox titulo={'Estado Civil'} name={'estadoCivil'} required={false}
-                    options={[
-                        'Solteiro(a)','Casado(a)','Viúvo(a)','Divorciado(a)','Separado(a)'
-                    ]}
-                    index={14}
-                />
-            </div>
-
-            <div className='forms-bardivisa'></div>
-            
-            <InputImage titulo={"Foto 3x4"} name={'fotoPerfil'} required={false} index={15}/>
-        </form>
+        <Formulario>
+            {
+                listaContato.map((item, index) => {
+                    if (item['double']) {
+                        return (
+                            <div key={index} className='double'>
+                                {
+                                    item['double'].map((dItem, dIndex) => {
+                                        if (dItem.tipo === 'text') { return <Input key={dIndex} titulo={dItem.titulo} name={dItem.name} type={dItem.tipo} /> }
+                                        else if (dItem.tipo === 'select') { return <SelectBox key={dIndex} titulo={dItem.titulo} name={dItem.name} options={dItem.options} /> }
+                                        else { return <InputData key={dIndex} titulo={dItem.titulo} name={dItem.name} /> }
+                                    })
+                                }
+                            </div>
+                        )
+                    }
+                    else if (item['imagem']) { return <InputImage key={index} titulo={item['imagem'].titulo} name={item['imagem'].name} /> }
+                    else if (item['borda']) { return <div key={index} className='bordaDivisa'></div> }
+                    else { return <Input key={index} titulo={item.titulo} name={item.name} type={item.tipo} /> }
+                })
+            }
+        </Formulario>
     )
 }

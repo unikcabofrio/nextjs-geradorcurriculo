@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react'
-import './style.css'
-
+import { useState } from 'react'
+import Formulario from '@/components/form'
 import { Insert, Select } from '@/database/data'
-
+import { ListaExperiencia } from '@/utils/listaComponents'
 import { Input } from '@/components/form/inputs'
-import { TextareaObj } from '@/components/form/textArea'
+import { ButtonAdd,ButtonRemove } from '@/components/button/divAddRemove'
 
 export default function FormExperiencia() {
-    let dataAtual = new Date();
-    const [addExp, setaddExp] = useState(Select('expTrabalho')[0] ? Select('expTrabalho')[0] : [{ nome: "", cargo: "", anoIncio: dataAtual.getFullYear()-5, anoTerm: dataAtual.getFullYear(), desc: "" }])
+    const [arrayExp, setArrayExp] = useState(Select('expTrabalho')[0] ? Select('expTrabalho')[0] : [ListaExperiencia[0]])
 
     const handleClickAdd = () => {
-        setaddExp(prevState => [...prevState, { nome: "", cargo: "", anoIncio: dataAtual.getFullYear()-5, anoTerm: dataAtual.getFullYear(), desc: "" }]);
+        setArrayExp(prevState => [...prevState, ListaExperiencia[0]]);
     }
 
     const handleClickRemove = (index) => {
-        setaddExp(prevState => {
+        setArrayExp(prevState => {
             const newState = [...prevState];
             newState.splice(index, 1);
             Insert(newState, 'expTrabalho')
@@ -24,85 +22,40 @@ export default function FormExperiencia() {
     }
 
     const handleInput = (value, key, index) => {
-        setaddExp(prevState => {
+        setArrayExp(prevState => {
             const newState = [...prevState];
             newState[index][key] = value
             return newState
         })
-        Insert(addExp, 'expTrabalho')
+        Insert(arrayExp, 'expTrabalho')
     }
 
-    // useEffect(() => { }, [addEdu])
-
     return (
-        <form className='Forms'>
+        <Formulario>
             {
-                addExp.map((item, index) => {
+                arrayExp.map((item, index) => {
                     return (
                         <div key={index}>
-                            {
-                                index != 0 ?
-                                    <div className='forms-bardivs'>
-                                        <span className='divsr' />
-                                        <span className="material-symbols-outlined clickRemove" onClick={() => { handleClickRemove(index) }}>remove</span>
-                                    </div> :
-                                    ''
-                            }
-                            <Input
-                                index={index+1}
-                                titulo={'Nome da Empresa'}
-                                name={`expName_${item}`}
-                                value={item.nome}
-                                onChange={(e) => { handleInput(e.target.value, 'nome', index) }}
-                                required={false}
-                            />
-                            <Input
-                                index={index+2}
-                                titulo={'Cargo'}
-                                name={`expCargo_${item}`}
-                                value={item.cargo}
-                                onChange={(e) => { handleInput(e.target.value, 'cargo', index) }}
-                                required={false}
-
-                            />
+                        <ButtonRemove index={index} handleClickRemove={handleClickRemove} length={arrayExp.length}/>
+                            <Input titulo={'Nome da Empresa'} name={`expName_${index}`} value={item.nome}onChange={(e) => { handleInput(e.target.value, 'nome', index) }}/>
+                            <Input titulo={'Cargo'} name={`expCargo_${index}`} value={item.cargo} onChange={(e) => { handleInput(e.target.value, 'cargo', index) }}/>
 
                             <div className='double'>
-                                <Input
-                                    index={index+3}
-                                    titulo={'Ano Início'}
-                                    name={`expAnoInico_${item}`}
-                                    type={'number'}
-                                    value={item.anoIncio}
-                                    onChange={(e) => { handleInput(e.target.value, 'anoIncio', index) }}
-                                    required={false}
-                                />
-                                <Input
-                                    index={index+4}
-                                    titulo={'Ano Término'}
-                                    name={`expAnoInico_${item}`}
-                                    type={'number'}
-                                    value={item.anoTerm}
-                                    onChange={(e) => { handleInput(e.target.value, 'anoTerm', index) }}
-                                    required={false}
-                                />
+                                <Input titulo={'Mês Início'} name={`eduAno_${index}`} type={'number'} value={item.mesI} onChange={(e) => { handleInput(e.target.value, 'mesI', index) }}/>
+                                <Input titulo={'Ano Início'} name={`eduAno_${index}`} type={'number'} value={item.anoI} onChange={(e) => { handleInput(e.target.value, 'anoI', index) }}/>
                             </div>
+                            <div className='double'>
+                                <Input titulo={'Mês Término'} name={`eduAno_${index}`} type={'number'} value={item.mesT} onChange={(e) => { handleInput(e.target.value, 'mesT', index) }}/>
+                                <Input titulo={'Ano Término'} name={`eduAno_${index}`} type={'number'} value={item.anoT} onChange={(e) => { handleInput(e.target.value, 'anoT', index) }}/>
+                            </div>
+                            <Input titulo={'Cidade'} name={`eduCidade_${index}`} value={item.cidade} onChange={(e) => { handleInput(e.target.value, 'cidade', index) }}/>
 
-                            <Input
-                                index={index+5}
-                                titulo={'Descrição'}
-                                name={`expDesc_${item}`}
-                                value={item.desc}
-                                onChange={(e) => { handleInput(e.target.value, 'desc', index) }}
-                                required={false}
-                            />
+                            <Input titulo={'Descrição'} name={`expDesc_${index}`} value={item.desc} onChange={(e) => { handleInput(e.target.value, 'desc', index) }}/>
                         </div>
                     )
                 })
             }
-            <div className='forms-bardivs'>
-                <span className='divs' />
-                <span className="material-symbols-outlined clickAdd" onClick={() => { handleClickAdd() }}>add</span>
-            </div>
-        </form>
+            <ButtonAdd handleClickAdd={handleClickAdd}/>
+        </Formulario>
     )
 }

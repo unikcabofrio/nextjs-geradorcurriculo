@@ -1,12 +1,24 @@
-import './style.css'
-
+import Formulario from '@/components/form'
+import { listaObjetivo } from '@/utils/listaComponents'
 import { TextareaObj } from '@/components/form/textArea'
 
 export default function FormObjetivo() {
 
     return (
-        <form className='Forms'>
-            <TextareaObj titulo={'Objetivo'} name={'objetivo'} index={1}/>
-        </form>
+        <Formulario>
+            {
+                listaObjetivo.map((item, index) => {
+                    if (item['textArea']) {
+                        return (
+                            <div key={index}>
+                                {item['textArea'].map((dItem, dIndex) => { return <TextareaObj key={dIndex} titulo={dItem.titulo} name={dItem.name} /> })}
+                            </div>
+                        )
+
+                    }
+                })
+            }
+
+        </Formulario>
     )
 }

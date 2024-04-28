@@ -5,7 +5,7 @@ import * as Lista from '@/utils/listaComponents'
 
 import Logo from "@/assets/perfil.png"
 
-export default function BoxViewe() {
+export default function ViewCurriculo() {
 
   function AnaliseData(mes, ano,text) {
     return mes ? `${mes}/${ano}` : text
@@ -17,9 +17,9 @@ export default function BoxViewe() {
   }
 
   return (
-    <div className="viewer notScroll">
+    <div className="viewer notScroll full">
 
-      <div className='paper'>
+      <div id="paperPDF" className='paper'>
 
         <div className='left'>
 
@@ -46,7 +46,7 @@ export default function BoxViewe() {
             <p><strong><Icone nome={'mail'} /></strong>{Select('email')[0]}</p>
             <p><strong><Icone nome={'call'} /></strong>{Select('telefone')[0]} | {Select('whatsapp')[0]}</p>
             <p><strong><Icone nome={'calendar_month'} /></strong>{DataNastimento(Select('dataNasc')[0])}, Tenho {Select('idade')[0]} Anos</p>
-            <p><strong><Icone nome={'pin_drop'} /></strong>{Select('endereco')[0]}, {Select('bairro')[0]}, {Select('cidade')[0]}/{Select('estado')[0]}, {Select('cep')[0]}</p>
+            <p><strong><Icone nome={'pin_drop'} /></strong>{Select('endereco')[0]}, {Select('bairro')[0]}, {Select('cidade')[0]}/{Select('estado')[0]}, CEP {Select('cep')[0]}</p>
 
             <div>
               <p><strong>Habilitação :</strong> {Lista.listaContato[9].double[1].options[Select('cnh')[0]]} </p>

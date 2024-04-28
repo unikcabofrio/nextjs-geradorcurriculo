@@ -1,16 +1,16 @@
-.form-image{
+.fImage{
     display: flex;
     flex-direction: column;
     margin-top: .5rem;
 }
 
-.form-image > label{
+.fImage > label{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.form-image > div{
+.fImage > div{
     display: flex;
     border: .1rem solid #ddd;
     color:#767676;
@@ -19,14 +19,14 @@
     margin-top: .2rem;
 }
 
-.form-image > div > input{
+.fImage > div > input{
     margin-left: .5rem;
     font-size: 1rem;
     outline: none;
     width: 80%;
 }
 
-.form-image > div > img{
+.fImage > div > img{
     width: 20%;
     height: auto;
     border-radius: .3rem;

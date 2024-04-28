@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './style.css'
+import { TituloLabel } from '@/components/titulo'
 import { Insert, Select } from '@/database/data'
 
 export function TextareaObj(props) {
@@ -17,30 +18,16 @@ export function TextareaObj(props) {
         Insert(value, key)
     }
     return (
-        <div className='form-textarea'>
-            <label>
-                <p>{props.titulo}</p>
-                <p className='form-label-requerid'>
-                    {props.required == false ? '' : 'obrigatório'}
-                </p>
-            </label>
+        <div className='textArea'>
+            <TituloLabel titulo={props.titulo} />
             <textarea
                 id={props.name}
-                tabIndex={props.index}
-                name={props.titulo}
                 value={inputValue}
                 onChange={(e) => { handleInput(e.target.value, props.name) }}
-                placeholder={props.placeholder ? props.placeholder : ''}
                 type={props.type ? props.type : 'text'}
-                required={props.required ? props.required : true}
             ></textarea>
-            <div className='forms-bardivisa'></div>
-            <label>
-                <p>Objetivos pré criado</p>
-                <p className='form-label-requerid'>
-                    {props.required == false ? '' : ''}
-                </p>
-            </label>
+            <div className='bordaDivisa'></div>
+            <TituloLabel titulo={'Objetivos pré criado'} />
             <select onChange={(e) => { handleInput(obj[e.target.value], props.name) }}>
                 <option value="">Selecionar</option>
                 {

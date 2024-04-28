@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react'
-import './style.css'
-
+import { useState } from 'react'
+import Formulario from '@/components/form'
 import { Insert, Select } from '@/database/data'
-
+import { ListaEducacao } from '@/utils/listaComponents'
 import { Input } from '@/components/form/inputs'
 import { SelectBox } from '@/components/form/select'
+import { ButtonAdd,ButtonRemove } from '@/components/button/divAddRemove'
 
 export default function FormEducação() {
-    let dataAtual = new Date();
-    const [addEdu, setaddEdu] = useState(Select('educacao')[0] ? Select('educacao')[0] : [{ nome: "", grau: "", ano: dataAtual.getFullYear() }])
+    const [arrayEdu, setArrayEdu] = useState(Select('educacao')[0] ? Select('educacao')[0] : [ListaEducacao[0]])
 
     const handleClickAdd = () => {
-        setaddEdu(prevState => [...prevState, { nome: "", grau: "", ano: dataAtual.getFullYear() }]);
+        setArrayEdu(prevState => [...prevState, ListaEducacao[0]]);
     }
 
     const handleClickRemove = (index) => {
-        setaddEdu(prevState => {
+        setArrayEdu(prevState => {
             const newState = [...prevState];
             newState.splice(index, 1);
             Insert(newState, 'educacao')
@@ -24,7 +23,7 @@ export default function FormEducação() {
     }
 
     const handleInput = (value, key, index) => {
-        setaddEdu(prevState => {
+        setArrayEdu(prevState => {
             const newState = [...prevState];
             newState[index][key] = value
             return newState
@@ -32,62 +31,29 @@ export default function FormEducação() {
         Insert(addEdu, 'educacao')
     }
 
-    // useEffect(() => { }, [addEdu])
-
     return (
-        <form className='Forms'>
+        <Formulario>
             {
-                addEdu.map((item, index) => {
+                arrayEdu.map((item, index) => {
                     return (
                         <div key={index}>
-                            {
-                                addEdu.length > 1 ?
-                                    <div className='forms-bardivs'>
-                                        <span className='text'>Remover Campo</span>
-                                        <span className='divsr' />
-                                        <span className="material-symbols-outlined clickRemove" onClick={() => { handleClickRemove(index) }}>remove</span>
-                                    </div> :
-                                    ''
-                            }
-                            <Input
-                                index={index+1}
-                                titulo={'Nome da Escola'}
-                                name={`eduName_${item}`}
-                                value={item.nome}
-                                onChange={(e) => { handleInput(e.target.value, 'nome', index) }}
-                                required={false}
-                            />
-
+                        <ButtonRemove index={index} handleClickRemove={handleClickRemove} length={arrayEdu.length}/>
+                            <Input titulo={'Nome da Escola'} name={`eduName_${index}`} value={item.nome} onChange={(e) => { handleInput(e.target.value, 'nome', index) }}/>
+                            <SelectBox titulo={'Grau'} name={`eduGrau_${index}`} options={ListaEducacao[1].listaGrau} value={item.grau} onChange={(e) => { handleInput(e.target.value, 'grau', index) }}/>
                             <div className='double'>
-                                <SelectBox 
-                                    titulo={'Grau'} 
-                                    name={`eduGrau_${item}`} 
-                                    required={false}
-                                    options={[
-                                        'Ensino Fundamental', 'Ensino Médio', 'Ensino Superior', ' Ensino Superior Avançado'
-                                    ]}
-                                    value={item.grau}
-                                    onChange={(e) => { handleInput(e.target.value, 'grau', index) }}
-                                    index={index+2}
-                                />
-                                <Input
-                                    index={index+3}
-                                    titulo={'Ano'}
-                                    name={`eduAno_${item}`}
-                                    type={'number'}
-                                    value={item.ano}
-                                    onChange={(e) => { handleInput(e.target.value, 'ano', index) }}
-                                    required={false}
-                                />
+                                <Input titulo={'Mês Início'} name={`eduAno_${index}`} type={'number'} value={item.mesI} onChange={(e) => { handleInput(e.target.value, 'mesI', index) }}/>
+                                <Input titulo={'Ano Início'} name={`eduAno_${index}`} type={'number'} value={item.anoI} onChange={(e) => { handleInput(e.target.value, 'anoI', index) }}/>
                             </div>
+                            <div className='double'>
+                                <Input titulo={'Mês Término'} name={`eduAno_${index}`} type={'number'} value={item.mesT} onChange={(e) => { handleInput(e.target.value, 'mesT', index) }}/>
+                                <Input titulo={'Ano Término'} name={`eduAno_${index}`} type={'number'} value={item.anoT} onChange={(e) => { handleInput(e.target.value, 'anoT', index) }}/>
+                            </div>
+                            <Input titulo={'Cidade'} name={`eduCidade_${index}`} value={item.cidade} onChange={(e) => { handleInput(e.target.value, 'cidade', index) }}/>
                         </div>
                     )
                 })
             }
-            <div className='forms-bardivs'>
-                <span className='divs' />
-                <span className="material-symbols-outlined clickAdd" onClick={() => { handleClickAdd() }}>add</span>
-            </div>
-        </form>
+            <ButtonAdd handleClickAdd={handleClickAdd}/>
+        </Formulario>
     )
 }

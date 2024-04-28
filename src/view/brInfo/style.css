@@ -1,0 +1,26 @@
+.barInfo {
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barInfo > h3{
+    color: #6c6c6c;
+}
+
+/* dispositivos móveis */
+@media screen and (max-width: 480px) {
+    .barInfo {
+        display: none;
+    }
+}
+
+/* iPads, tablets */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .barInfo{
+        padding: .5rem;
+    }
+}

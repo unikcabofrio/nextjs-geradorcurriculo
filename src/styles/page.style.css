@@ -1,0 +1,69 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.boxViewe{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.boxForm{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+}
+
+.boxForm > form{
+    width: 60%;
+    height: 100%;
+    padding: 1rem;
+    overflow: auto;
+}
+
+.boxForm > .viewer{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    overflow: auto;
+}
+
+.full{
+    width: 100% !important;
+}
+
+/* dispositivos móveis */
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .boxViewe{
+        height: 95vh;
+    }
+
+    .boxForm > form{
+        width: 100%;
+    }
+
+    .boxForm > .viewer{
+        display: 0;
+    }
+}
+
+/* iPads, tablets */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .boxForm > form{
+        width: 100%;
+    }
+    .boxForm > .viewer{
+        display: 0;
+    }
+}

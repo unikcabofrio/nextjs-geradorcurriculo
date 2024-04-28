@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image';
+import Imagem from '@/components/image'
+import { TituloLabel } from '@/components/titulo'
 import './style.css'
 import { Insert, Select } from '@/database/data'
 
@@ -17,22 +18,10 @@ export function InputImage(props) {
     }
 
     return (
-        <div className='form-image'>
-            <label>
-                <p>{props.titulo}</p>
-                <p className='form-label-requerid'>
-                    {props.required == false ? '' : 'obrigatório'}
-                </p>
-            </label>
+        <div className='fImage'>
+            <TituloLabel titulo={props.titulo} />
             <div>
-                <Image
-                    src={image}
-                    alt={"Imagem selecionada"}
-                    size={'cover'}
-                    width={0}
-                    height={0}
-                    priority
-                />
+                <Imagem src={image ? image : Logo} alt={"Imagem selecionada"} />
                 <input
                     id={props.name}
                     name={props.titulo}

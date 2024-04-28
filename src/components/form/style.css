@@ -1,0 +1,37 @@
+form > .double,
+form > div >.double{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+form > .double > div,
+form > div >.double > div{
+    width: 49%;
+}
+
+.bordaDivisa{
+    width: 100%;
+    border-bottom: 2px solid #f0f0f0;
+    margin: 1rem 0;
+}
+
+/* dispositivos móveis */
+@media screen and (max-width: 480px) {
+    form > .double{
+        flex-direction: column;
+    }
+    form > .double > div{
+        width: 100%;
+    }
+}
+
+/* iPads, tablets */
+@media (min-width: 481px) and (max-width: 1024px) {
+    form > .double{
+        flex-direction: column;
+    }
+    form > .double > div{
+        width: 100%;
+    }
+}

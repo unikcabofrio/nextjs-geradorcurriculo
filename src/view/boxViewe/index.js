@@ -12,8 +12,18 @@ export default function BoxViewe() {
   }
 
   function DataNastimento(data){
-    const text = data.split('-')
-    return `${text[2]}/${text[1]}/${text[0]}`
+    if(data){
+      const text = data.split('-')
+      return `${text[2]}/${text[1]}/${text[0]}`
+    }
+    return ''
+  }
+
+  function ValidaçãoCampo(value,text){
+    if(Array.isArray(value)){
+      return text
+    }
+    return value ? value : text
   }
 
   return (
@@ -23,23 +33,23 @@ export default function BoxViewe() {
 
         <div className='left'>
 
-          <Imagem src={Logo} alt={'Foto Perfil'} />
+          <Imagem src={Select('objetivo')[0] ? Select('objetivo')[0] : Logo} alt={'Foto Perfil'} />
 
           <div className='info'>
             <h5>Objetivo Profissional</h5>
-            <p>{Select('objetivo')[0]}</p>
+            <p>{ValidaçãoCampo(Select('objetivo')[0],'')}</p>
           </div>
 
           <div className='info'>
             <h5>Habilidades</h5>
-            {Select('habilidade')[0].map((item, index) => { return (<p key={index}><Icone nome={'check_circle'} /> {item.nome} | {Lista.ListaHabilidades[1].listaNivel[item.nivel]}</p>) })}
+            {ValidaçãoCampo(Select('habilidade')[0].map((item, index) => { return (<p key={index}><Icone nome={'check_circle'} /> {item.nome} | {Lista.ListaHabilidades[1].listaNivel[item.nivel]}</p>) }),'')}
           </div>
 
         </div>
 
         <div className='right'>
 
-          <h5 className='firstName'>{Select('primeiroNome')[0]}</h5>
+          <h5 className='firstName'>{ValidaçãoCampo(Select('primeiroNome')[0])}</h5>
           <h5 className='lastName'>{Select('sobrenome')[0]}</h5>
 
           <div className='infoHeader'>

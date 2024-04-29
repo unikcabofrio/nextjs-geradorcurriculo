@@ -19,7 +19,7 @@ export default function ViewCurriculo() {
   return (
     <div className="viewer notScroll full">
 
-      <div id="paperPDF" className='paper'>
+      <div id="paperPDF">
 
         <div className='left'>
 

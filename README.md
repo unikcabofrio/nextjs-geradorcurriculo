@@ -4,12 +4,9 @@
 Site criado em next js focado em ajudar pessoas com dificuldade de criar curriculos
 
 
-
-
 ## Stack utilizada
 
 **Front-end:** React, NextJs, Html, CSS
-
 
 
 <!-- ## Variáveis de Ambiente
@@ -19,12 +16,6 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 `API_KEY`
 
 `ANOTHER_API_KEY` -->
-
-
-## Site ( Responsivo )
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
 
 ## Funcionalidades
 
@@ -40,6 +31,7 @@ Foi obtido conhecimento dentro das ferramentas utilizadas do NextJs 14
 ## Erros a corrigir
 
 - Exportação do PDF
+- Problemas com o designer na parte de visualizar o currículo sendo montado
 
 ## Melhorias
 

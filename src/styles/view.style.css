@@ -3,91 +3,102 @@
     padding: 1rem;
 }
 
-.paper{
+.paper,
+#paperPDF{
     display: flex;
 }
 
-#paperPDF{
-    width: 793.707px;
-    height: 1122.52px;
-    box-sizing: content-box;
+.paper .left{
+    width: 40%;
 }
 
-#paperPDF > div{
-    height: 1122.52px;
+.paper .right{
+    width: 100%;  
+}
+
+.right{
+    padding-left:0 !important;
+}
+
+.paper .left,
+.paper .right{
+    padding: 1rem;
+    font-size: .8rem;
 }
 
 .left{
     background-color: #767676;
     color:#fff;
-    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    font-size: 12px;
-}
-
-.left > img {
-    width: 200px;
-    border-radius: 200px;
-    margin-bottom: 20px;
-}
-
-.left > .info{
-    width: 230px;
-    border-top: 2px solid #565656;
-    padding: 20px 0;
-}
-
-.left > .info > h5,
-.right > .info > h5{
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.left > .info > p,
-.right > .infoHeader > p{
-    display: flex;
-    align-items: center;
-    text-align: justify;
-}
-
-.left > .info > p > span,
-.right > .infoHeader > p > strong >span {
-    font-size: 20px;
-    margin-right: 8px;
 }
 
 .right{
     background-color: #fff;
     color:#000;
-    width: 809px;
     display: flex;
     flex-direction: column;
-    padding: 20px 20px 0 0;
-    font-size: 12px;
+}
+
+.paper .left > img,
+.paper .left > .info{
+    width: 100%;
+}
+
+.paper .left > img {
+    border-radius: 100%;
+    margin-bottom: 2rem;
+}
+
+.left > .info,
+.right > .info {
+    border-top: 2px solid #565656;
+}
+
+.paper .left > .info{
+    padding: 1rem 0;
+}
+
+.paper .left > .info > h5,
+.paper .right > .info > h5,
+.paper .left > .info > p > span,
+.paper .right > .infoHeader > p > strong > span {
+    font-size: 1rem;
+}
+
+.left > .info > p,
+.right > .infoHeader > p,
+.right > .info > div > .desc{
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+
+.paper .right > .firstName,
+.paper .right > .lastName,
+.paper .right > .infoHeader,
+.paper .right > .info{
+    padding-left: 1rem !important;
 }
 
 .right > .firstName,
-.right > .lastName,
-.right > .infoHeader,
-.right > .info{
-    padding-left: 20px !important;
-}
-
-.right > .firstName{
-    font-size: 65px;
+.right > .info > h5{
     color: #565656;
 }
 
-.right > .lastName{
-    font-size: 45px;
+.paper .right > .firstName{
+    font-size: 4rem;
 }
 
-.right > .infoHeader{
-    width: 503px;
-    padding: 20px 0;
+.paper .right > .lastName{
+    font-size: 2rem;
+}
+
+.paper .right > .infoHeader,
+.paper .right > .info {
+    width: 100%;
+    padding: 1rem 0;
 }
 
 .right > .infoHeader > div{
@@ -95,28 +106,75 @@
     justify-content: space-between;
 }
 
-.right > .infoHeader > p,
-.right > .infoHeader > div > p,
-.right > .info > div > p
-{
-    margin: 5px 0;
+.paper .right > .info > div{
+    margin: 1rem 0;
 }
 
-.right > .info {
-    width: 503px;
-    border-top: 2px solid #767676;
-    padding: 20px 0;
+
+/* paperPDFF */
+
+#paperPDF{
+    width: 793.707px;
+    height: 1122.52px;
 }
 
-.right > .info > h5{
-   color: #565656;
+#paperPDF .left{
+    width: 317.482px;
 }
 
-.right > .info > div{
-    margin: 10px 0;
-    margin-bottom: 40px;
+#paperPDF .right{
+    width: 793.707px;  
 }
 
-.right > .info > div > .desc{
-    text-align: justify;
+#paperPDF .left,
+#paperPDF .right{
+    padding: 15.694px;
+    font-size: 12.56px;
+}
+
+#paperPDF .left > img,
+#paperPDF .left > .info{
+    width: 100%;
+}
+
+
+#paperPDF .left > img {
+    border-radius: 100%;
+    margin-bottom: 31.388px;
+}
+
+#paperPDF .left > .info{
+    padding: 15.694px 0;
+}
+
+#paperPDF .left > .info > h5,
+#paperPDF .right > .info > h5,
+#paperPDF .left > .info > p > span,
+#paperPDF .right > .infoHeader > p > strong > span {
+    font-size: 15.694px;
+}
+
+#paperPDF .right > .firstName,
+#paperPDF .right > .lastName,
+#paperPDF .right > .infoHeader,
+#paperPDF .right > .info{
+    padding-left: 15.694px !important;
+}
+
+#paperPDF .right > .firstName{
+    font-size: 63.176px;
+}
+
+#paperPDF .right > .lastName{
+    font-size: 31.588px;
+}
+
+#paperPDF .right > .infoHeader,
+#paperPDF .right > .info {
+    width: 100%;
+    padding: 15.694px 0;
+}
+
+#paperPDF .right > .info > div{
+    margin: 15.694px 0;
 }

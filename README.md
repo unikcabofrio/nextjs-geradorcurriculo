@@ -3,6 +3,7 @@
 
 Site criado em next js focado em ajudar pessoas com dificuldade de criar curriculos
 
+![Imagem]([http://url/to/img.png](https://raw.githubusercontent.com/unikcabofrio/nextjs-geradorcurriculo/main/public/site.png))
 
 ## Stack utilizada
 

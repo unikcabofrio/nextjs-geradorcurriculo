@@ -18,24 +18,10 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 `ANOTHER_API_KEY` -->
 
-## Funcionalidades
-
-- Responsivo
-- Exportar PDF
-
-
-## Aprendizados
-
-Foi obtido conhecimento dentro das ferramentas utilizadas do NextJs 14
-
 ## Erros a corrigir
 
 - Exportação do PDF
 - Problemas com o designer na parte de visualizar o currículo sendo montado
-
-## Melhorias
-
-- Foi adicionado um sistema de busca de Endereço pela API - [CEP Promise](https://github.com/BrasilAPI/cep-promise)
 
 ## Autores
 
